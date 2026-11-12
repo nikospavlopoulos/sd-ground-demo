@@ -219,7 +219,7 @@ One name has been changed — the crew member whose id triggered the incident in
 [PolyForm Noncommercial License 1.0.0](LICENSE-CODE.md); the prose, decision
 records and screenshots are under
 [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/). See
-[LICENSE](LICENSE).
+[LICENSE.md](LICENSE.md).
 
 ---
 
