@@ -8,5 +8,3 @@ export const DROPZONE = {
   timeZone: "Europe/Athens",
 } as const;
 
-export const AIRCRAFT = { registration: "D-EBNE", type: "Cessna 182" } as const;
-
