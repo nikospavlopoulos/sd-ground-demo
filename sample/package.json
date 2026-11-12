@@ -1,0 +1,19 @@
+{
+  "name": "sd-ground-sample",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A runnable excerpt of the sd_ground domain core",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "suncalc": "^2.0.2"
+  },
+  "devDependencies": {
+    "@types/suncalc": "^1.9.2",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.0"
+  }
+}

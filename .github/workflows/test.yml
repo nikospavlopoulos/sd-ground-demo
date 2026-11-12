@@ -1,0 +1,30 @@
+name: Sample
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: sample
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: sample/package-lock.json
+
+      # `npm ci`, never `npm install`: npm 10's tree builder crashes on this
+      # dependency graph with "Cannot read properties of null (reading
+      # 'edgesOut')". The committed lockfile is what makes the sample
+      # installable, which is the whole point of it being here.
+      - run: npm ci
+
+      - run: npm run typecheck
+      - run: npm test
