@@ -223,6 +223,8 @@ records and screenshots are under
 
 ---
 
-*There is a sibling: **Winds Aloft & Weather**, a public forecast tool for the same
-airfield. Two apps, deliberately not one —
-[why](decisions/0019-linking-to-the-winds-app.md).*
+*There is a sibling: **[Winds Aloft & Weather](https://github.com/nikospavlopoulos/sd-winds-demo)**,
+a public forecast tool for the same airfield —
+[open it](https://winds.skydive-athens.com). Two apps, deliberately not one, and
+they disagree about time on purpose: that one stores true instants, this one stores
+local wall-clock strings. [Why](decisions/0019-linking-to-the-winds-app.md).*
