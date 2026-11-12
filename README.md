@@ -37,8 +37,8 @@ ratio is recomputed from summed primitives, and there is a
 ## Why I built it
 
 I am a licensed USPA skydiver and a certified skydiving coach, and I work ground
-crew at the dropzone. Nobody asked for this app. I was the one logging the loads,
-so I was the one watching the problem.
+crew at the dropzone. I built this on my own initiative: I was the one logging the
+loads, so I was the one watching the problem.
 
 Flights and fuel lived in a phone note, in Greek, retyped from scratch every
 operating day:
