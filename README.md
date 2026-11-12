@@ -106,8 +106,8 @@ flowchart TD
 field is fine. But the crew move around the zone all day, and a takeoff time that
 cannot be recorded at the moment of takeoff is a wrong takeoff time. A tap updates
 the screen synchronously, persists to IndexedDB, and queues an operation; the
-server catches up afterwards. *"Usually fine" is not good enough for the one tap
-that matters* — [0003](decisions/0003-offline-first-with-client-uuids.md).
+server catches up afterwards —
+[0003](decisions/0003-offline-first-with-client-uuids.md).
 
 **Entities carry client-generated UUIDs**, so replaying a queue that partly landed
 converges on the same rows instead of duplicating them. Day ids are derived from
@@ -199,9 +199,6 @@ folded onto its own transliteration.
   and every manifest icon address carries a fingerprint of its own picture.
 - Every push to `main` runs the lot before it deploys. Nothing untested reaches
   production.
-
-**iOS is implemented and unverified.** There is no iPhone to test on, so the spec
-says so, and nothing here claims otherwise.
 
 ## Stack
 
