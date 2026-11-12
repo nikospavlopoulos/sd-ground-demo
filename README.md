@@ -2,10 +2,10 @@
 
 [![Sample](https://github.com/nikospavlopoulos/sd-ground-demo/actions/workflows/test.yml/badge.svg)](https://github.com/nikospavlopoulos/sd-ground-demo/actions/workflows/test.yml)
 
-**A production web app that records every load a jump aircraft flies and every
-litre of fuel that goes into it.** It runs on Cloudflare Workers, D1 and Preact,
-and it is used on operating days at Skydive Athens, at Kopaida Dimitra airfield in
-Boeotia, Greece.
+**A production progressive web app that records every load a jump aircraft flies
+and every litre of fuel that goes into it.** It installs to a phone's home screen,
+runs on Cloudflare Workers, D1 and Preact, and is used on operating days at
+Skydive Athens — Kopaida Dimitra airfield, Boeotia, Greece.
 
 **→ Try it: [ground-demo.skydive-athens.com](https://ground-demo.skydive-athens.com)**
 — the real app with no database behind it. Nothing is saved, the crew and the
@@ -68,7 +68,9 @@ per load did we average last month" had no answer short of reading every note.
   the shift and the aircraft.
 - **Sunset and time remaining in the header**, computed from the airfield's
   coordinates — jumping stops at sunset.
-- **Survives a dropout and starts from cache.** Installable to a home screen.
+- **A real PWA, not a bookmark**: it installs to the home screen with its own
+  icon, *starts* with the network already off, and takes Web Push for the day's
+  totals and a reminder an hour before sunset.
 - **Shares a finished day as an image** to the phone's share sheet.
 
 ## Architecture
@@ -131,6 +133,15 @@ edit — [0016](decisions/0016-a-day-is-what-its-loads-say-it-is.md).
 a fact about the airfield's clock; convert it and a daylight-saving changeover
 silently rewrites history. The sibling winds app stores true instants, for exactly
 the opposite and equally correct reason — [0019](decisions/0019-linking-to-the-winds-app.md).
+
+**The Service Worker is hand-written, not generated.** `vite-plugin-pwa` can emit
+one for you, and that is the right default — until you need a `push` handler,
+which a generated worker has nowhere to put. So the app uses Workbox's
+`injectManifest` instead: the precache manifest is still generated, the worker
+around it is ours. The cost is that everything a generated worker gives you free
+has to be reproduced deliberately, including the rule that `/api/` must never be
+served from cache. A stale `200` there would look like a write that succeeded and
+never reached the database — silent data loss presented as success.
 
 **The interface is designed for sunlight first.** Forced light with contrast far
 past the WCAG AAA floor, because outdoors the screen competes with the sun and
